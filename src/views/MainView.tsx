@@ -4,17 +4,16 @@ import FeaturedProduct from "../components/Home/FeaturedSection";
 import CustomerReviews from "../components/Home/CustomerReviews";
 import ContactUs from "../components/Home/Contactus";
 const MainView = () => {
-  
-  return(
+
+  return (
     <div>
-        
-        <HeroSection/>
-        <FeaturedProduct/>
-        <Banner/>
-        <CustomerReviews/>
-        <ContactUs/>
+      <HeroSection />
+      <FeaturedProduct />
+      <Banner />
+      <CustomerReviews />
+      <ContactUs />
     </div>
-  ) 
+  )
 
 
 };
