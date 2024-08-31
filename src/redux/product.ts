@@ -1,45 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IProductSliceState, UpdateCategoryPayload } from "../interfaces/product.interface";
+
+const initialState: IProductSliceState = {
+  productsList: [],
+  singleProduct: null,
+  categories: {
+    electronics: [],
+    menWear: [],
+    womenWear: [],
+    jewelery: [],
+  },
+};
 
 export const productSlice = createSlice({
-    name: 'products',
-    initialState: {
-        productsList: [],
-        singleProduct: null,
-        categories: {
-            electronics: [],
-            menWear: [],
-            womenWear: [],
-            jewellery: []
-        }
+  name: "products",
+  initialState,
+  reducers: {
+    updateProductList: (state: any, action) => {
+      const product = {
+        id: new Date(),
+        title: action.payload.title,
+        completed: false,
+      };
+      state.push(product);
     },
-    reducers: {
-        updateProductList: (state: any, action) => {
-            const product = {
-                id: new Date(),
-                title: action.payload.title,
-                completed: false,
-            };
-            state.push(product);
-        },
-        updateElectronicProducts: (state, action) => {
-
-        },
-        updateMenWear: (state, action) {
-
-        },
-        updateWomenWear: (state, action) => {
-
-        },
-        updateJewelleryProducts: (state, action) => {
-
-        },
-        updateSingleProduct: (state, action) => {
-            
-        }
+    updateCategoryProducts: (state, action: PayloadAction<UpdateCategoryPayload>) => {
+        state.categories[action.payload.category] = action.payload.data;
     },
+    updateSingleProduct: (state, action) => {},
+  },
 });
 
-
-export const { updateProductList } = productSlice.actions;
+export const {
+  updateProductList,
+  updateSingleProduct,
+  updateCategoryProducts
+} = productSlice.actions;
 
 export default productSlice.reducer;

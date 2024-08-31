@@ -1,5 +1,5 @@
-const Card = ({data}:any) => {
-    console.log(data)
+const Card = (props:any) => {
+    console.log(props)
   return (
     <div>
       <div className="p-4 max-w-sm mx-auto bg-white rounded-xl  hover:shadow-md overflow-hidden cursor-pointer">
