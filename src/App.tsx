@@ -1,21 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
-import MainView from './views/MainView';
-import ShopView from './views/ShopView';
-import Navbar from './chunks/Navbar';
-import Footer from './chunks/Footer';
+import Navbar from './components/Base/Navbar';
+import Footer from './components/Base/Footer';
+import Router from './routes/Router';
+
 function App() {
   return (
-    <Router>
       <div className="">
-      <Navbar/>
-        <Routes>
-          <Route path="/" element={<MainView />} />
-          <Route path='/shop' element={<ShopView/>} />
-        </Routes>
-        <Footer/>
+        <Navbar />
+        <Router />
+        <Footer />
       </div>
-    </Router>
   );
 }
 
