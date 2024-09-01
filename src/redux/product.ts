@@ -24,15 +24,11 @@ export const productSlice = createSlice({
         
         state.categories[categorie] = action.payload.data;        
     },
-    updateSingleProduct: (state, action) => {
-      
-    },
   },
 });
 
 export const {
   updateProductList,
-  updateSingleProduct,
   updateCategoryProducts
 } = productSlice.actions;
 

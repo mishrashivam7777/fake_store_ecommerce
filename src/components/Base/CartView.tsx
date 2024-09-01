@@ -1,31 +1,21 @@
 
+import { removeItem, updateItemQuantity} from '../../redux/cart'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+
 const CartView = () => {
-  const cartItems = [
-    {
-      id: 1,
-      title: 'Sample Product 1',
-      price: 29.99,
-      quantity: 2,
-      image: 'https://via.placeholder.com/100'
-    },
-    {
-      id: 2,
-      title: 'Sample Product 2',
-      price: 49.99,
-      quantity: 1,
-      image: 'https://via.placeholder.com/100'
-    }
-  ];
+  const {cartItems} = useSelector((state: RootState)=> state.cartItems)
+  
+  const dispatch = useDispatch()
 
-  const handleRemove = (id: number) => {
-   
+  const handleRemove = (id:any) => {
+    dispatch(removeItem(id));
   };
 
-  const handleQuantityChange = (id: number, quantity: number) => {
-    
+  const handleQuantityChange = (id:any, quantity:any) => {
+    dispatch(updateItemQuantity({id, quantity }))
   };
 
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
     <div className="bg-gray-100 p-8">
@@ -36,7 +26,7 @@ const CartView = () => {
             <p className="text-center text-gray-600">Your cart is empty.</p>
           ) : (
             <div>
-              {cartItems.map((item) => (
+              {cartItems.map((item:any) => (
                 <div key={item.id} className="flex items-center mb-4 border-b pb-4">
                   <img
                     src={item.image}
@@ -49,7 +39,6 @@ const CartView = () => {
                     <div className="flex items-center mt-2">
                       <button
                         onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-                        disabled={item.quantity <= 1}
                         className="bg-gray-300 px-2 py-1 rounded-l-lg"
                       >
                         -
@@ -72,7 +61,6 @@ const CartView = () => {
                 </div>
               ))}
               <div className="mt-6 text-right">
-                <h2 className="text-2xl font-bold">Total: ${totalPrice.toFixed(2)}</h2>
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4 shadow hover:bg-blue-600"
                 >
