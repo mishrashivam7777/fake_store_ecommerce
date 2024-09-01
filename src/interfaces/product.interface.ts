@@ -21,3 +21,7 @@ export interface Product {
   title: string;
   completed: boolean;
 }
+
+export interface ICartItem {
+  cartItems: Product[] | [];
+}

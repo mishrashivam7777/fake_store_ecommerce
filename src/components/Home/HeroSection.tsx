@@ -1,11 +1,15 @@
-
+import videosrc from '../../assets/video.mp4'
 const HeroSection = () => {
   return (
-    <div 
-      className="relative bg-cover bg-center h-screen flex items-center justify-center text-center text-white"
-      style={{ backgroundImage: 'url()' }} 
-    >
-      <div className="absolute inset-0 bg-black opacity-50"></div> 
+    <div className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 w-full h-full object-cover"
+        src={videosrc} 
+      />
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative z-10 p-6">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
           Discover Amazing Deals on the Latest Products!
