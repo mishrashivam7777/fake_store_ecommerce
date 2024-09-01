@@ -39,8 +39,7 @@ const FeaturedProducts = () => {
 
   function callback(entries: any) {
     entries.forEach(async (entry: any) => {
-      if (entry.isIntersecting) {
-        
+      if (entry.isIntersecting) {     
         await getCategoryProduct(entry.target.id);       
       }
     });

@@ -17,19 +17,16 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     updateProductList: (state: any, action) => {
-      const product = {
-        id: new Date(),
-        title: action.payload.title,
-        completed: false,
-      };
-      state.push(product);
+      state.productsList = action.payload.data; 
     },
     updateCategoryProducts: (state, action: PayloadAction<UpdateCategoryPayload>) => {
         const categorie = action.payload.category;
         
         state.categories[categorie] = action.payload.data;        
     },
-    updateSingleProduct: (state, action) => {},
+    updateSingleProduct: (state, action) => {
+      
+    },
   },
 });
 
