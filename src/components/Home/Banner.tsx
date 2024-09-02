@@ -14,9 +14,6 @@ const Banner = () => {
           <button className="px-6 py-3 bg-[#000000] text-white font-semibold rounded-lg shadow-md hover:bg-[#333333] transition duration-300">
             Shop Now
           </button>
-          <button className="ml-4 px-6 py-3 bg-[#e0e0e0] text-[#000000] font-semibold rounded-lg shadow-md hover:bg-[#cccccc] transition duration-300">
-            Learn More
-          </button>
         </div>
       </div>
     </div>
