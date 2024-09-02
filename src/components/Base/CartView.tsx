@@ -3,6 +3,8 @@ import { removeItem, updateItemQuantity} from '../../redux/cart'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
+
+
 const CartView = () => {
   const {cartItems} = useSelector((state: RootState)=> state.cartItems)
   
@@ -29,6 +31,7 @@ const CartView = () => {
               {cartItems.map((item:any) => (
                 <div key={item.id} className="flex items-center mb-4 border-b pb-4">
                   <img
+                    loading='lazy'
                     src={item.image}
                     alt={item.title}
                     className="w-20 h-20 object-cover rounded-lg mr-4"

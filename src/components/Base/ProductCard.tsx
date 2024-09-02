@@ -9,6 +9,7 @@ const ProductCard = ({ product }:any) => {
   return (
     <div onClick={() => handleNavigation(product)} className="border cursor-pointer rounded-lg overflow-hidden shadow-lg p-4 bg-white">
       <img
+        loading="lazy"
         src={product.image}
         alt={product.title}
         className="w-full h-48 "

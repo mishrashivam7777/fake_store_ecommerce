@@ -2,9 +2,10 @@ import { useEffect, useRef } from "react";
 import axios from "axios";
 import ProductCarousel from "../Products/ProductCarousel";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
+// import { RootState } from "../../store";
 import { updateCategoryProducts } from "../../redux/product";
-import { ICategory } from "../../interfaces/product.interface";
+import { ICategory, RootState } from "../../interfaces/product.interface";
+
 
 const FeaturedProducts = () => {
   const jeweleryCarousel = useRef(null);

@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ICartItem } from "../interfaces/product.interface";
+import { ICartItem, Product } from "../interfaces/product.interface";
 
 const initialState: ICartItem = {
-    cartItems: JSON.parse(localStorage.getItem('cart')) ?? [],
+    cartItems: JSON.parse(localStorage.getItem('cart') ?? '[]') as Product[]
 };
+
+
+
 
 export const cartSlice = createSlice({
   name: "cart",

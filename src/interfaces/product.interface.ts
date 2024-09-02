@@ -25,3 +25,23 @@ export interface Product {
 export interface ICartItem {
   cartItems: Product[] | [];
 }
+
+export interface Products {
+  id: number;
+  title: string;
+  image: string;
+  price: number;
+}
+
+interface ProductsState {
+  categories: {
+    jewelery: Products[];
+    electronics: Products[];
+    menWear: Products[];
+    womenWear: Products[];
+  };
+}
+
+export interface RootState {
+  products: ProductsState;
+}
