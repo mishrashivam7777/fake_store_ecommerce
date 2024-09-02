@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { updateProductList } from "../redux/product";
 import ProductCard from "../components/Base/ProductCard";
 
@@ -13,6 +14,7 @@ const ShopView = () => {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [minRating, setMinRating] = useState(0);
   const [sortOrder, setSortOrder] = useState("none");
+
 
   useEffect(() => {
     async function getProducts() {
@@ -42,7 +44,7 @@ const ShopView = () => {
     return matchesSearch && matchesCategory && matchesPrice && matchesRating;
   });
 
-  const sortedProducts = filteredProducts.slice().sort((a:any, b:any) => {
+  const sortedProducts = filteredProducts.slice().sort((a: any, b: any) => {
     if (sortOrder === "price-asc") {
       return a.price - b.price;
     } else if (sortOrder === "price-desc") {
@@ -57,12 +59,17 @@ const ShopView = () => {
       <h1 className="text-3xl font-bold text-gray-900 mb-4">
         Discover Our Exclusive Collection
       </h1>
-      <p className="text-lg text-gray-600">
+      <p className="text-lg text-gray-600 mb-8">
         Explore the best products tailored just for you.
       </p>
 
       {/* Search Bar */}
-      <div className="relative max-w-[400px] mx-auto mb-8">
+      <motion.div
+        className="relative max-w-[400px] mx-auto mb-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <input
           type="text"
           placeholder="Search..."
@@ -86,10 +93,15 @@ const ShopView = () => {
             />
           </svg>
         </span>
-      </div>
+      </motion.div>
 
       {/* Filter Controls */}
-      <div className="flex justify-center items-center gap-4 mb-8">
+      <motion.div
+        className="flex flex-wrap justify-center items-center gap-4 mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="flex flex-col">
           <label className="block text-gray-700">Categories</label>
           <select
@@ -148,14 +160,26 @@ const ShopView = () => {
             <option value="price-desc">Price: High to Low</option>
           </select>
         </div>
-      </div>
+      </motion.div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      >
         {sortedProducts.map((product: any) => (
-          <ProductCard key={product.id} product={product} />
+          <motion.div
+            key={product.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5 }}
+          >
+            <ProductCard product={product} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

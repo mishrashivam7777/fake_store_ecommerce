@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 interface Product {
   id: number;
@@ -16,17 +17,13 @@ interface ProductCarouselProps {
 const ProductCarousel: React.FC<ProductCarouselProps> = ({ title, products }) => {
   const navigate = useNavigate();
   
-  
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 5; 
+  const productsPerPage = 5;
 
-  
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
-  
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-
   const totalPages = Math.ceil(products.length / productsPerPage);
 
   const handleNavigation = (data: Product) => {
@@ -40,51 +37,64 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ title, products }) =>
   return (
     <div className="h-full w-full border border-gray-300 bg-gray-100 rounded-lg overflow-hidden">
       <h2 className="text-2xl font-bold text-center my-4">{title}</h2>
+      
       <div className="flex overflow-x-auto space-x-4 p-4 items-stretch">
         {currentProducts.map((product) => (
-          <div
+          <motion.div
             key={product.id}
             onClick={() => handleNavigation(product)}
             className="flex-shrink-0 cursor-pointer w-[220px] bg-white shadow-md rounded-lg flex flex-col transition-transform transform hover:scale-105 hover:shadow-xl"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-[200px] rounded-t-lg"
+              className="w-full h-[200px] rounded-t-lg object-cover"
             />
             <div className="flex-1 p-4 flex flex-col justify-between">
               <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
               <p className="text-gray-700">${product.price.toFixed(2)}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
       
       {/* Pagination Controls */}
       <div className="flex justify-center my-4">
-        <button
+        <motion.button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-blue-500 text-white rounded-l"
+          className="px-4 py-2 bg-blue-500 text-white rounded-l disabled:opacity-50"
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3 }}
         >
           Previous
-        </button>
+        </motion.button>
         {[...Array(totalPages).keys()].map((pageNumber) => (
-          <button
+          <motion.button
             key={pageNumber}
             onClick={() => handlePageChange(pageNumber + 1)}
             className={`px-4 py-2 ${currentPage === pageNumber + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'} mx-1 rounded`}
+            initial={{ scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.3 }}
           >
             {pageNumber + 1}
-          </button>
+          </motion.button>
         ))}
-        <button
+        <motion.button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-blue-500 text-white rounded-r"
+          className="px-4 py-2 bg-blue-500 text-white rounded-r disabled:opacity-50"
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3 }}
         >
           Next
-        </button>
+        </motion.button>
       </div>
     </div>
   );

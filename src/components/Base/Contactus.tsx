@@ -16,24 +16,10 @@ const ContactUs = () => {
               <form>
                 <div className="mb-4">
                   <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full p-4 border border-[#cccccc] rounded-lg mb-4"
-                  />
-                  <input
                     type="email"
                     placeholder="Your Email"
                     className="w-full p-4 border border-[#cccccc] rounded-lg mb-4"
                   />
-                  <input
-                    type="text"
-                    placeholder="Subject"
-                    className="w-full p-4 border border-[#cccccc] rounded-lg mb-4"
-                  />
-                  <textarea
-                    placeholder="Your Message"
-                    className="w-full p-4 border border-[#cccccc] rounded-lg mb-4"
-                  ></textarea>
                   <button
                     type="submit"
                     className="px-6 py-3 bg-[#000000] text-white font-semibold rounded-lg shadow-md hover:bg-[#333333] transition duration-300"
@@ -48,13 +34,13 @@ const ContactUs = () => {
               <h3 className="text-2xl font-semibold text-[#333333] mb-4">Contact Information</h3>
               <ul className="text-lg text-[#666666] mb-4">
                 <li className="mb-2">
-                  <strong>Phone:</strong> +1 (123) 456-7890
+                  <strong>Phone:</strong> 123456789
                 </li>
                 <li className="mb-2">
-                  <strong>Email:</strong> support@example.com
+                  <strong>Email:</strong> support@ecom.com
                 </li>
                 <li className="mb-2">
-                  <strong>Address:</strong> 123 Example St, Suite 456, City, Country
+                  <strong>Address:</strong> 123 Example St, Suite 456
                 </li>
               </ul>
               <h4 className="text-xl font-semibold text-[#333333] mb-4">Follow Us</h4>
