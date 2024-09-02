@@ -18,8 +18,9 @@ const SingleProductPage = () => {
 
   return (
     <div className="bg-gray-100 p-8">
-      <div className="mx-auto flex items-center justify-center gap-[30px]">
+      <div className="mx-auto flex text-center items-center flex-wrap justify-center gap-[30px]">
         <img
+          loading="lazy"
           src={product?.image}
           alt={product?.title}
           className="w-[400px] h-[400px] rounded-lg shadow-lg p-2"
