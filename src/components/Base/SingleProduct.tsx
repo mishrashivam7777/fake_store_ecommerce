@@ -1,19 +1,28 @@
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { addItem } from "../../redux/cart";
+import { toast } from "react-toastify";
 
 const SingleProductPage = () => {
   const location = useLocation();
-  const dispatch = useDispatch()
-  const product = location.state?.product;  
-  console.log(product);
+  const dispatch = useDispatch();
+  const product = location.state?.product;
 
   if (!product) {
     return <div>No product found</div>;
   }
 
-  const handleAddToCart = (product:any) => {
-    dispatch(addItem(product))
+  const handleAddToCart = (product: any) => {
+    dispatch(addItem(product));
+    toast.success(`${product.title} has been added to your cart!`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (

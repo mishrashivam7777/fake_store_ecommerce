@@ -44,15 +44,7 @@ const HeroSection = () => {
         >
           Explore a wide range of categories and find exactly what you're looking for. Shop now and enjoy exclusive discounts!
         </motion.p>
-        <motion.button
-          className="px-6 py-3 bg-black text-white font-semibold rounded-lg shadow-md hover:bg-[#e64a19] transition duration-300"
-          initial="hidden"
-          animate="visible"
-          variants={buttonVariants}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          Shop Now
-        </motion.button>
+        
       </div>
     </div>
   );

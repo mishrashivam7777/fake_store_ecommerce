@@ -29,7 +29,6 @@ export const cartSlice = createSlice({
         localStorage.setItem('cart', JSON.stringify(state.cartItems));
     },
     addItem(state, action: any) {
-        console.log('action: ', action.payload);
         const existingItem = state.cartItems.find(item => item.id === action.payload.id);
   
         if (existingItem) {
