@@ -14,7 +14,7 @@ const CartView = () => {
     dispatch(removeItem(id));
   };
 
-  const handleQuantityChange = (id:any, quantity:any) => {
+  const handleQuantityChange = (id:number, quantity:number) => {
     dispatch(updateItemQuantity({id, quantity }))
   };
 

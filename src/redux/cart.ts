@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
         if (existingItem) {
           state.cartItems = state.cartItems.map(item =>
             item.id === action.payload.id
-              ? { ...item, quantity: item.quantity + 1 }
+              ? { ...item, quantity: (item.quantity ?? 0) + 1 }
               : item
           );
         } else {

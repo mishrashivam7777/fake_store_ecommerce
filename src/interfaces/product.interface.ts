@@ -20,6 +20,7 @@ export interface Product {
   id: Date;
   title: string;
   completed: boolean;
+  quantity?: number;
 }
 
 export interface ICartItem {
