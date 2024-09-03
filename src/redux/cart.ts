@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    updateItemQuantity(state, action: any) {
+    updateItemQuantity(state, action:{payload:any, type:string}) {
         if(action.payload.quantity === 0){
             state.cartItems = state.cartItems.filter( item => item.id !== action.payload.id)
         } else{

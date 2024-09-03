@@ -24,7 +24,7 @@ export interface Product {
 }
 
 export interface ICartItem {
-  cartItems: Product[] | [];
+  cartItems: Product[] ;
 }
 
 export interface Products {
